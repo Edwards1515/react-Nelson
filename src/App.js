@@ -8,16 +8,8 @@ class App extends Component {
     super();
 
     this.state = {
-      producto: [],
-      productoBackup: [],
-      textBuscar: "",
-      miArrayDePersonas: [],
-      criterioDeOrdenamiento: {
-        nombreDelCriterio: "nombre",
-        descendente: false
-      },
-      arrayDeProfesores :[],
-      arrayDeRestaurantes1:[]
+
+      arrayDePromo:[]
     }
   }
 
@@ -28,9 +20,9 @@ class App extends Component {
           response.json()
             .then(datos =>{
               this.setState({
-                arrayDeRestaurantes1: datos.Promo
+                arrayDePromo: datos.Promo
               })
-              console.log(this.state.arrayDeRestaurantes1);
+              
             })
             .catch(err => console.log(err))
         })
@@ -56,15 +48,11 @@ class App extends Component {
     );
   }
 
- 
-
-
-
   obtenerCardsConDocentesDesdeElBack = () => {
     let arrayDeCardsHTML = [];
-    for (let i = 0; i < this.state.arrayDeRestaurantes1.length; i++) {
+    for (let i = 0; i < this.state.arrayDePromo.length; i++) {
       arrayDeCardsHTML.push(
-        <Menu promocion="2x1" restaurante={this.state.arrayDeRestaurantes1[i]}></Menu>
+        <Menu promocion="2x1" restaurante={this.state.arrayDePromo[i]}></Menu>
         
       )
      
